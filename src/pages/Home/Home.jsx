@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import getQueryParams from '../../services/get-query-params';
-import { fetchMostPopularMovies, fetchMoviesWithQuery } from '../../services/api-service';
+import { fetchMostPopularMovies } from '../../services/api-service';
 import './Home.css';
 
 const Home = () => {
@@ -10,17 +9,8 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const { query } = getQueryParams(location.search);
-    if (query) {
-      fetchMovies(query);
-    } else {
       fetchMostPopularMovies().then(movies => setMovies(movies));
-    }
-  }, [location.search]);
-
-  const fetchMovies = query => {
-    fetchMoviesWithQuery(query).then(movies => setMovies(movies));
-  };
+  }, []);
 
   return (
     <>
