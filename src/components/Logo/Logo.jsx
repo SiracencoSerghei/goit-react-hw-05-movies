@@ -1,17 +1,19 @@
 import { SiThemoviedatabase } from 'react-icons/si';
 
-const Logo = () => {
-    const iconStyle = {
-        color: 'white',
-        fontSize: '56px',
-        padding:0,
-        marginRight: '25px',
-      };
-    return (
-      <div>
-        <SiThemoviedatabase style={iconStyle} />
-      </div>
-    );
+const Logo = ({ color, bgr }) => {
+  const iconStyle = {
+    color: color, // Используем значение пропа color напрямую
+    backgroundColor: bgr,
+    fontSize: '56px',
+    padding: '5px',
+    marginRight: '25px',
   };
 
-  export default Logo;
+  return (
+    <div>
+      <SiThemoviedatabase style={iconStyle} />
+    </div>
+  );
+};
+
+export default Logo;
