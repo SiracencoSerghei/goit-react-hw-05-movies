@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { fetchMoviesWithQuery } from '../../services/api-service';
 import SearchBar from "components/SearchBar";
 import { startTransition } from 'react';
@@ -7,7 +7,6 @@ import '../Home/Home.css';
 
 
 const Movies = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -32,7 +31,7 @@ const Movies = () => {
     if (searchQuery) {
       fetchMovies(searchQuery);
     }
-  }, []);
+  }, [searchQuery]);
 
   return (
     <>
