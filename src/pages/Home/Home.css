@@ -1,32 +1,61 @@
 .trending-movies {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-  }
-  
-  .trending-movies li {
-    flex: 0 0 calc(33.33% - 20px);
-    margin: 10px;
-    text-align: center;
-    list-style: none;
-    overflow: hidden;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  }
-  
-  .trending-movies img {
-    border-radius: 8px;
-  }
-  
-  .trending-movies p {
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-decoration: none;
+  max-width: calc(100vw - 48px);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trending-movies .movie-item {
+  width: 100px;
+  height: 260px;
+  flex: 0 0 calc(25% - 10px);
+  margin: 10px;
+  padding: 8px;
+  width: 160px;
+  border-radius: 4px;
+  text-align: center;
+  list-style: none;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trending-movies .movie-poster {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.trending-movies .movie-item:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.trending-movies .movie-title {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: #212121;
   font-weight: 500;
   font-size: 12px;
   line-height: calc(14 / 12);
   text-transform: uppercase;
-  word-break: break-word;
   padding-left: 5px;
   margin-top: 5px;
-  }
+  height: 42px;
+}
+
+.trending-movies li a {
+  text-decoration: none;
+}

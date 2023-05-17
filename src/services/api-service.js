@@ -1,30 +1,54 @@
+import axios from 'axios';
+
 const baseURL = 'https://api.themoviedb.org/3';
 const key = 'cb1bcc244723619ea7f2217b5a84ccd8';
 
-export const fetchShowDetails = showId => {                                        // show one movies details by id
-  return fetch(`${baseURL}/movie/${showId}?api_key=${key}`).then(res => res.json());
+export const fetchShowDetails = async showId => {
+  try {
+    const response = await axios.get(`${baseURL}/movie/${showId}?api_key=${key}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching show details:', error);
+    throw error;
+  }
 };
 
-export const fetchMostPopularMovies = () => {
-  return fetch(`${baseURL}/trending/movie/week?api_key=${key}`)
-  .then(res => res.json())
-  .then(movies => movies.results.map(movie => movie))
+export const fetchMostPopularMovies = async () => {
+  try {
+    const response = await axios.get(`${baseURL}/trending/movie/week?api_key=${key}`);
+    return response.data.results;
+  } catch (error) {
+    console.error('Error fetching most popular movies:', error);
+    throw error;
+  }
 };
 
-export const fetchMoviesWithQuery = searchQuery => {                                 // search movies by request
-  return fetch(`${baseURL}/search/movie?api_key=${key}&query=${searchQuery}`)
-    .then(res => res.json())
-    .then(movies => movies.results.map(movie => movie))
+export const fetchMoviesWithQuery = async (searchQuery) => {
+  try {
+    const response = await axios.get(`${baseURL}/search/movie?api_key=${key}&query=${searchQuery}`);
+    return response.data.results;
+  } catch (error) {
+    console.error('Error fetching movies with query:', error);
+    throw error;
+  }
 };
 
-export const fetchCast = (id) => {
-  return fetch(`${baseURL}/movie/${id}/credits?api_key=${key}`)
-  .then(res => res.json())
-  .then(movie => movie.cast)
-}
+export const fetchCast = async id => {
+  try {
+    const response = await axios.get(`${baseURL}/movie/${id}/credits?api_key=${key}`);
+    return response.data.cast;
+  } catch (error) {
+    console.error('Error fetching cast:', error);
+    throw error;
+  }
+};
 
-export const fetchReviews = (id) => {
-  return fetch(`${baseURL}/movie/${id}/reviews?api_key=${key}&page=1`)
-  .then(res => res.json())
-  .then(movie => movie.results)
-}
+export const fetchReviews = async id => {
+  try {
+    const response = await axios.get(`${baseURL}/movie/${id}/reviews?api_key=${key}&page=1`);
+    return response.data.results;
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    throw error;
+  }
+};

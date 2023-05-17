@@ -1,10 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './SearchBar.css';
 
-const SearchBar = ({onSubmit, searchQuery}) => {
-
-  const[input, setInput] = useState('');
- 
+const SearchBar = ({ onSubmit, searchQuery }) => {
+  const [input, setInput] = useState('');
 
   const handleInputChange = (event) => {
     const inputValue = event.target.value.trim();
@@ -13,11 +11,11 @@ const SearchBar = ({onSubmit, searchQuery}) => {
 
   const onHandleSubmit = (event) => {
     event.preventDefault();
-    if (input === searchQuery){
+    if (input === searchQuery) {
       alert(`You have already selected ${input}, you can change your search or continue browsing`);
-      return
+      return;
     }
-    if (input || (event.key === 'Enter')) {
+    if (input || event.key === 'Enter') {
       onSubmit(input);
     }
   };
@@ -26,7 +24,6 @@ const SearchBar = ({onSubmit, searchQuery}) => {
   return (
     <>
       <div className="Searchbar">
-
         <form className="SearchForm" onSubmit={onHandleSubmit}>
           <input
             className="SearchForm-input"
@@ -42,9 +39,9 @@ const SearchBar = ({onSubmit, searchQuery}) => {
           </button>
         </form>
       </div>
-      {input === '' && <p className="Sorry">Sorry, you need to write something.<br /> Please choose movie.</p>}
+      {input === '' && <p className="Sorry">Sorry, you need to write something.<br /> Please choose a movie.</p>}
     </>
   );
-}
+};
 
 export default SearchBar;

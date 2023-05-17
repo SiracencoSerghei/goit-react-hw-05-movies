@@ -9,7 +9,17 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-      fetchMostPopularMovies().then(movies => setMovies(movies));
+    const fetchMovies = async () => {
+      try {
+        const movies = await fetchMostPopularMovies();
+        setMovies(movies);
+        console.log(movies);
+      } catch (error) {
+        console.error('Error fetching most popular movies:', error);
+      }
+    };
+
+    fetchMovies();
   }, []);
 
   return (
@@ -18,18 +28,20 @@ const Home = () => {
       {movies.length > 0 && (
         <ul className='trending-movies'>
           {movies.map(movie => (
-            <li key={movie.id}>
-              <Link
-                to={{ pathname: `/movies/${movie.id}`, state: { from: location } }}
-              >
-                <img alt={movie.title}
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  width="120"
-                  height="180">
-                </img>
-                <p>{movie.title}</p>
-              </Link>
-            </li>
+              <li className='movie-item' key={movie.id}>
+                <Link
+                  to={{ pathname: `/movies/${movie.id}`, state: { from: location } }}
+                >
+                  <img
+                  className='movie-poster'
+                  alt={movie.title}
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    width="120"
+                    height="180">
+                  </img>
+                  <p className='movie-title'>{movie.title}</p>
+                </Link>
+              </li>
           ))}
         </ul>
       )}

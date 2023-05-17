@@ -2,3 +2,7 @@
     font-size: 26px;
     font-weight: bold;
 }
+.nav-link.navlink.active {
+    color: #ff5100;
+    font-weight: bold;
+  }
