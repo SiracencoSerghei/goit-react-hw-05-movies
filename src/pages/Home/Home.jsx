@@ -13,7 +13,6 @@ const Home = () => {
       try {
         const movies = await fetchMostPopularMovies();
         setMovies(movies);
-        console.log(movies);
       } catch (error) {
         console.error('Error fetching most popular movies:', error);
       }
