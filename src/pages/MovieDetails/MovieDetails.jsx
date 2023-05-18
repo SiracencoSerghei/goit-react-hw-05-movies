@@ -1,4 +1,4 @@
-import React, {Suspense,Outlet, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 // import {FaArrowLeft}from 'react-icons/fa';
 import {fetchShowDetails} from '../../services/api-service';
@@ -26,6 +26,7 @@ const MovieDetails = () => {
   console.log('backTo', backTo);
   console.log('location', location);
   console.log(location);
+  console.log(details);
   return (
     <>
     <div> HELLO DETAIL!!!!</div>
