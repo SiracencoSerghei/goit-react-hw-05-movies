@@ -20,15 +20,16 @@ const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
-  const backTo = location?.state?.from?.pathname || '/';
+  // const backTo = location?.state?.from?.pathname || '/';
+  const backTo = location?.state?.from || '/';
 
-  console.log(backTo);
+  console.log('backTo', backTo);
+  console.log('location', location);
   console.log(location);
   return (
     <>
     <div> HELLO DETAIL!!!!</div>
           <Link to={backTo}>
- {/* <FaArrowLeft/> */}
        Back
       </Link>
     </>

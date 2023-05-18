@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
 
-const SearchBar = ({ onSubmit, searchQuery }) => {
+const SearchBar = ({ search, setSearch }) => {
   const [input, setInput] = useState('');
 
   const handleInputChange = (event) => {
@@ -9,9 +9,15 @@ const SearchBar = ({ onSubmit, searchQuery }) => {
     setInput(inputValue);
   };
 
+  const onSubmit = (searchQuery) => {
+    // Placeholder implementation for the onSubmit function
+    console.log('Search query:', searchQuery);
+    setSearch(searchQuery);
+  };
+
   const onHandleSubmit = (event) => {
     event.preventDefault();
-    if (input === searchQuery) {
+    if (input === search) {
       alert(`You have already selected ${input}, you can change your search or continue browsing`);
       return;
     }
@@ -39,7 +45,6 @@ const SearchBar = ({ onSubmit, searchQuery }) => {
           </button>
         </form>
       </div>
-      {input === '' && <p className="Sorry">Sorry, you need to write something.<br /> Please choose a movie.</p>}
     </>
   );
 };
