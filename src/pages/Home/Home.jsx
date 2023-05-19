@@ -27,22 +27,22 @@ const Home = () => {
       {movies.length > 0 && (
         <ul className='trending-movies'>
           {movies.map(movie => (
-              <li className='movie-item' key={movie.id}>
-                <Link
-                  to={{ pathname: `/movies/${movie.id}`, state: { from: location } }}
-                >
-                  <div className='posterWrapper'>
-                    <img
+            <li className='movie-item' key={movie.id}>
+              <Link
+                to={{ pathname: `/movies/${movie.id}`, state: { from: location } }}
+              >
+                <div className='posterWrapper'>
+                  <img
                     className='movie-poster'
                     alt={movie.title}
-                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                      width="120"
-                      height="180">
-                    </img>
-                  </div>
-                  <p className='movie-title'>{movie.title}</p>
-                </Link>
-              </li>
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    width="120"
+                    height="180">
+                  </img>
+                </div>
+                <p className='movie-title'>{movie.title}</p>
+              </Link>
+            </li>
           ))}
         </ul>
       )}

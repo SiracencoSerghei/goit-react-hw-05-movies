@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {fetchReviews} from '../../services/api-service';
+import { fetchReviews } from '../../services/api-service';
 
 const Reviews = () => {
 
-    const { movieId } = useParams();
+  const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
