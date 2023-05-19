@@ -13,6 +13,7 @@ const MovieDetails = () => {
   useEffect(()=>{
     // Store the path of the previous page in useRef
     prevPathRef.current = location.state?.from;
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const MovieDetails = () => {
     fetchData();
 
   }, [movieId]);
-// console.log( prevPathRef );
+console.log( prevPathRef );
   const backTo = prevPathRef.current || '/';
 
   return (
