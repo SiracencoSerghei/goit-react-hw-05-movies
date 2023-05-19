@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchBar.css';
 
 const SearchBar = ({ search, setSearch }) => {
   const [input, setInput] = useState('');
+
+  useEffect(() => {
+    const savedInput = localStorage.getItem('search');
+    if (savedInput) {
+      setInput(savedInput);
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     const inputValue = event.target.value.trim();

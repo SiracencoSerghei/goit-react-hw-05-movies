@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-// import {FaArrowLeft}from 'react-icons/fa';
+import React, { useEffect, useState, Suspense } from 'react';
+import { Link, useLocation, useParams, Outlet } from 'react-router-dom';
+import {FaArrowLeft}from 'react-icons/fa';
 import {fetchShowDetails} from '../../services/api-service';
+import './MovieDetails.css';
 
 const MovieDetails = () => {
   const [details, setDetails] = useState({});
@@ -20,61 +21,50 @@ const MovieDetails = () => {
     fetchData();
   }, [movieId]);
 
-  // const backTo = location?.state?.from?.pathname || '/';
   const backTo = location?.state?.from || '/';
 
-  console.log('backTo', backTo);
-  console.log('location', location);
-  console.log(location);
-  console.log(details);
   return (
-    <>
-    <div> HELLO DETAIL!!!!</div>
-          <Link to={backTo}>
-       Back
-      </Link>
-    </>
+    <div className="container">
+  <Link to={backTo} className="backBtn">
+  <FaArrowLeft />Back
+  </Link>
+  <div className="poster">
+    <img
+      alt={details.title}
+      src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
+    />
+    <div>
+      <h2>{details.title}</h2>
+      <h3>User score: {Math.round(details.vote_average * 10)}%</h3>
+      <h3>Overview</h3>
+      <p>{details.overview}</p>
+      <h3>Genres:</h3>
+      <ul className='movieGenres'>
+        {details.genres?.map(genre => (
+          <li key={genre.id}>{genre.name}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <ul className='detailsMenu'>
+    <li>
+      <h3 className='menuDetail'>
+        <Link to="cast">Cast</Link>
+      </h3>
+    </li>
+    <li>
+      <h3 className='menuDetail'>
+        <Link to="reviews">Reviews</Link>
+      </h3>
+    </li>
+  </ul>
+  <Suspense fallback={<div>Loading</div>}>
+    <Outlet />
+  </Suspense>
+</div>
     
 
   );
 };
 
 export default MovieDetails;
-
-//     <>
-
-//       <div>
-//         <img
-//           alt={details.title}
-//           src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-//         ></img>
-//         <div>
-//           <h2>{details.title}</h2>
-//           <h3>User score: {details.vote_average * 10}%</h3>
-//           <h3>Overview</h3>
-//           <p>{details.overview}</p>
-//           <h3>Genres</h3>
-//           <ul>
-//             {details.genres?.map(genre => (
-//               <li key={genre.id}>{genre.name}</li>
-//             ))}
-//           </ul>
-//         </div>
-//       </div>
-//       {/* <h2>Additional information</h2> */}
-//       <ul>
-//         <li>
-//           <h3>
-//             <Link to="cast">cast</Link>
-//           </h3>
-//         </li>
-//         <li>
-//           <h3>
-//             <Link to="reviews">reviews</Link>
-//           </h3>
-//         </li>
-//       </ul>
-//       <Suspense fallback={<div>Loading</div>}>
-//         <Outlet />
-//       </Suspense>
-//     </>

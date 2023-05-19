@@ -31,13 +31,15 @@ const Home = () => {
                 <Link
                   to={{ pathname: `/movies/${movie.id}`, state: { from: location } }}
                 >
-                  <img
-                  className='movie-poster'
-                  alt={movie.title}
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    width="120"
-                    height="180">
-                  </img>
+                  <div className='posterWrapper'>
+                    <img
+                    className='movie-poster'
+                    alt={movie.title}
+                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                      width="120"
+                      height="180">
+                    </img>
+                  </div>
                   <p className='movie-title'>{movie.title}</p>
                 </Link>
               </li>

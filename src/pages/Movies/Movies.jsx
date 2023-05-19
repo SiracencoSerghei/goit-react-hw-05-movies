@@ -9,6 +9,13 @@ const Movies = () => {
   const [search, setSearch] = useState(searchParams.get('query') ?? '');
   const [movies, setMovies] = useState([]);
   const location = useLocation();
+  
+  useEffect(() => {
+    const savedSearch = localStorage.getItem('search');
+    if (savedSearch) {
+      setSearch(savedSearch);
+    }
+  }, []);
 
   const fetchMovies = async (search) => {
     try {
@@ -24,7 +31,7 @@ const Movies = () => {
       return
     }
     setSearchParams({ query: search });
-
+    localStorage.setItem('search', search);
       fetchMovies(search);
 
   }, [search, setSearchParams]);
