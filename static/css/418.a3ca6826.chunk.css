@@ -1,0 +1,2 @@
+.castList{display:flex;flex-wrap:wrap;justify-content:center;margin:0 auto;max-width:calc(100vw - 48px);padding:0}.castItem,.castList{list-style:none;text-decoration:none}.castItem{border-radius:4px;box-shadow:0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);flex-basis:calc(25% - 10px);flex-grow:0;flex-shrink:0;height:260px;margin:10px;overflow:hidden;padding:8px;text-align:center;width:100px;width:160px}
+/*# sourceMappingURL=418.a3ca6826.chunk.css.map*/

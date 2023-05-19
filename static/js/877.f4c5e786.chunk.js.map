@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/877.f4c5e786.chunk.js","mappings":"gMAOA,EALY,WAER,OAAO,gDACV,C","sources":["components/Cast/Cast.jsx"],"sourcesContent":["\n\nconst Cast =() => {\n\n    return <div>element/ cast movie</div>\n}\n\nexport default Cast;"],"names":[],"sourceRoot":""}
